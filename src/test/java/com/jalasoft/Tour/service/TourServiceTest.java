@@ -12,7 +12,7 @@ public class TourServiceTest {
 
   @Test
   public void givenValues_whenRequestTourDescription_thenHaveStringFormat() {
-    var tourResponse = new TourService(new TourRepository());
+    var tourResponse = new TourService(null);
 
     assertEquals(
         "The travel to Medellin is in the range ($100 & $300) with a final price of $250.75",

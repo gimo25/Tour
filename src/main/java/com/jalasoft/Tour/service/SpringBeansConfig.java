@@ -10,10 +10,11 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 @Deprecated
 public class SpringBeansConfig {
-  @Bean
+  /*@Bean
   public TourRepository tourRepository() {
-    return new TourRepository();
-  }
+    //return new TourRepository();
+    return null;
+  }*
 
   @Bean
   public TourService tourService() {
@@ -23,6 +24,6 @@ public class SpringBeansConfig {
   @Bean
   public AgentService agentService() {
     return new AgentService(tourRepository());
-  }
+  }*/
 
 }

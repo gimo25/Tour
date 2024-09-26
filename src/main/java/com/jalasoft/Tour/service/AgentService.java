@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
  * @author Giordano Bortolini
  */
 @Service
+@Deprecated
 public class AgentService {
   private final TourRepository tourRepository;
 
@@ -21,8 +22,8 @@ public class AgentService {
   }
 
   public void displayToursBy(Boolean isNice) {
-    tourRepository.findByType(isNice).stream().map(TourEntity::getTitle)
-        .forEach(System.out::println);
+    /*tourRepository.findByType(isNice).stream().map(TourEntity::getTitle)
+        .forEach(System.out::println);*/
   }
 
 }
