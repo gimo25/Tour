@@ -2,14 +2,18 @@ package com.jalasoft.Tour.service;
 
 import com.jalasoft.Tour.entity.TourEntity;
 import com.jalasoft.Tour.repository.TourRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 /**
  * @author Giordano Bortolini
  */
 
+@Service
 public class TourService {
   private TourRepository tourRepository;
 
+  @Autowired
   public TourService(TourRepository tourRepository) {
     this.tourRepository = tourRepository;
     createTour("Colombia", 750, true);
@@ -21,5 +25,10 @@ public class TourService {
   }
   public TourEntity createTour(String title, Integer price, Boolean nicePlace) {
     return tourRepository.save(new TourEntity(title, price, nicePlace));
+  }
+
+  public String getTourMessageByPriceRange(int min, int max) {
+    final float price = 250.75f;
+    return StringTemplate.STR."The travel to Medellin is in the range ($\{min} & $\{max}) with a final price of $\{price}";
   }
 }

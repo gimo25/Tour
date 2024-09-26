@@ -8,6 +8,7 @@ import org.springframework.context.annotation.Configuration;
  * @author Giordano Bortolini
  */
 @Configuration
+@Deprecated
 public class SpringBeansConfig {
   @Bean
   public TourRepository tourRepository() {

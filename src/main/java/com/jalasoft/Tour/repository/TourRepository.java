@@ -3,11 +3,12 @@ package com.jalasoft.Tour.repository;
 import com.jalasoft.Tour.entity.TourEntity;
 import java.util.ArrayList;
 import java.util.List;
+import org.springframework.stereotype.Repository;
 
 /**
  * @author Giordano Bortolini
  */
-
+@Repository
 public class TourRepository {
   private final List<TourEntity> tours = new ArrayList<>();
 
