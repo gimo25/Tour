@@ -3,12 +3,14 @@ package com.jalasoft.Tour.dto;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 /**
  * @author Giordano Bortolini
  */
 @Data
 @AllArgsConstructor
+@NoArgsConstructor
 public class TourDTO {
 
   @JsonProperty("tourId")
