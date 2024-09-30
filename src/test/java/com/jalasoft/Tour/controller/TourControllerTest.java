@@ -22,8 +22,9 @@ public class TourControllerTest {
   @Test
   public void givenTours_whenRequest_getMethod_thenOk() throws Exception {
 
-    this.mockMvc.perform(MockMvcRequestBuilders.get("/tour/ticket")).andDo(MockMvcResultHandlers.print()).andExpect(
-        MockMvcResultMatchers.status().isOk()).andExpect(MockMvcResultMatchers.content().string("You will meet a love the flag day."));
-
+    this.mockMvc.perform(MockMvcRequestBuilders.get("/tour-package/by-price"))
+        .andDo(MockMvcResultHandlers.print()).andExpect(
+            MockMvcResultMatchers.status().isOk())
+        .andExpect(MockMvcResultMatchers.content().string("The tour with the lowest price is TC1."));
   }
 }

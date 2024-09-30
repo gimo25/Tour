@@ -20,13 +20,13 @@ public class TourPackageService {
   public TourPackageService(TourPackageRepository repository) {
 
     this.repository = repository;
-    createTourPackage("TC1", "Travel to Colombia");
-    createTourPackage("TB1", "Travel to Bolivia");
-    createTourPackage("TM1", "Travel to Mexico");
+    createTourPackage("TC1", "Travel to Colombia", 1500);
+    createTourPackage("TB1", "Travel to Bolivia", 2300);
+    createTourPackage("TM1", "Travel to Mexico",3100);
   }
 
-  public TourPackageEntity createTourPackage(String code, String name) {
-    TourPackageEntity entity = repository.save(new TourPackageEntity(code, name));
+  public TourPackageEntity createTourPackage(String code, String name, double price) {
+    TourPackageEntity entity = repository.save(new TourPackageEntity(code, name, price));
     return entity;
   }
 

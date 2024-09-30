@@ -30,9 +30,13 @@ public class TourPackageEntity {
   @Column(name = "end_date")
   private LocalDate endDate;
 
-  public TourPackageEntity(String code, String name) {
+  @Column(name = "price")
+  private double price;
+
+  public TourPackageEntity(String code, String name, double price) {
     this.code = code;
     this.name = name;
+    this.price = price;
   }
 
   public TourPackageDTO toDTO() {
