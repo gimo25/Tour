@@ -1,11 +1,13 @@
 package com.jalasoft.Tour.entity;
 
+import com.jalasoft.Tour.dto.TourPackageDTO;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import java.time.LocalDate;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 /**
@@ -13,6 +15,7 @@ import lombok.Setter;
  */
 @Getter
 @Setter
+@NoArgsConstructor
 @Entity
 @Table(name = "tour_package")
 public class TourPackageEntity {
@@ -27,4 +30,18 @@ public class TourPackageEntity {
   @Column(name = "end_date")
   private LocalDate endDate;
 
+  public TourPackageEntity(String code, String name) {
+    this.code = code;
+    this.name = name;
+  }
+
+  public TourPackageDTO toDTO() {
+    TourPackageDTO dto = new TourPackageDTO();
+    dto.setCode(this.code);
+    dto.setName(this.name);
+    dto.setStartDate(this.startDate);
+    dto.setEndDate(this.endDate);
+
+    return dto;
+  }
 }
