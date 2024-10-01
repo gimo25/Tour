@@ -31,7 +31,7 @@ public class TourPackageEntity {
   private LocalDate endDate;
 
   @Column(name = "price")
-  private double price;
+  private Double price;
 
   public TourPackageEntity(String code, String name, double price) {
     this.code = code;

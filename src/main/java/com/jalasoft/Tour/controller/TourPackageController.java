@@ -28,4 +28,10 @@ public class TourPackageController {
   public TourPackageDTO getPackageByName(@PathVariable("name") String name) {
     return service.findByPackageName(name);
   }
+
+  @GetMapping("/by-price")
+  @ResponseBody
+  public String getByLowerPrice() {
+    return service.getLowerPricePackageDescription();
+  }
 }

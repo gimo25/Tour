@@ -37,4 +37,8 @@ public class TourPackageService {
     return packageEntity.map(TourPackageEntity::toDTO).orElse(null);
   }
 
+  public String getLowerPricePackageDescription() {
+    TourPackageEntity packageEntity = repository.findFirstByOrderByPriceAsc();
+    return STR."The tour with the lowest price is \{packageEntity.toDTO().getCode()}.";
+  }
 }

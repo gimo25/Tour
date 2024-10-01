@@ -12,4 +12,6 @@ import org.springframework.stereotype.Repository;
 public interface TourPackageRepository extends JpaRepository<TourPackageEntity, String> {
 
   Optional<TourPackageEntity> findByName(String name);
+
+  TourPackageEntity findFirstByOrderByPriceAsc();
 }
