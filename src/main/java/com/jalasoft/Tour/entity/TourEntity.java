@@ -55,4 +55,13 @@ public class TourEntity {
     this.price = (int) Math.round(tour.getPrice());
     this.nicePlace = tour.getNicePlace();
   }
+
+  public TourDTO toDTO() {
+    TourDTO tourDTO = new TourDTO();
+    tourDTO.setId(this.id.toString());
+    tourDTO.setTitle(this.title);
+    tourDTO.setDescription(this.description);
+    tourDTO.setPrice((double) Math.round(this.price));
+    return tourDTO;
+  }
 }

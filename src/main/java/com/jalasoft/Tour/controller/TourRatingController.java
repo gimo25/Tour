@@ -1,7 +1,9 @@
 package com.jalasoft.Tour.controller;
 
 import com.jalasoft.Tour.dto.RatingDto;
+import com.jalasoft.Tour.service.TourRatingService;
 import java.util.UUID;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -17,9 +19,12 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping(path = "/tours/{tourId}/ratings")
 public class TourRatingController {
 
+  @Autowired
+  private TourRatingService service;
+
   @PostMapping
   @ResponseStatus(HttpStatus.CREATED)
-  public RatingDto createTourRating(@PathVariable(value = "tourId") UUID tourId, @RequestBody String ratingDto) {
-    return "";
+  public RatingDto createTourRating(@PathVariable(value = "tourId") UUID tourId, @RequestBody RatingDto ratingDto) {
+    return service.createTourRating(tourId, ratingDto);
   }
 }
