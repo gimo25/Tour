@@ -28,4 +28,30 @@ public class ItemServiceTest {
 
     assertEquals("Breakfast is Orange juice with milk/coffee.", result);
   }
+
+  @Test
+  public void testVarargs() {
+
+    assertEquals("1 2 3 4 5 6 ...n", getAllArgs());
+  }
+
+  private String getAllArgs() {
+
+    return processMessage("1", "2", "3", "4","5", "6", "...n");
+    /*String[] args = {"1", "2", "3", "4", "...n"};
+    return processMessage(args);*/
+   // return processMessage("1", "2", "3", "4", "5","...n");
+  }
+
+  private String processMessage(String... args) {
+    StringBuilder builder = new StringBuilder();
+    for (int i = 0; i < args.length; i++) {
+      builder.append(args[i]).append(" ");
+    }
+    return builder.toString().trim();
+  }
+
+  private String processMessage(String a, String b, String c, String d, String e, String f) {
+    return STR."\{a} \{b} \{c} \{d} \{e} \{f}";
+  }
 }

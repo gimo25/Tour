@@ -1,0 +1,122 @@
+{
+  "displayName": "Tours Service",
+  "config": {
+    "tours": {
+      "displayName": "Tour Details",
+      "sections": {
+        "details": {
+          "displayName": "Tour Information",
+          "fields": [
+            {
+              "title": {
+                "label": "Title",
+                "type": "text",
+                "state": "REQUIRED",
+                "defaultValue": ""
+              }
+            },
+            {
+              "description": {
+                "label": "Description",
+                "type": "text",
+                "state": "REQUIRED",
+                "defaultValue": ""
+              }
+            },
+            {
+              "duration": {
+                "label": "Duration",
+                "type": "date",
+                "state": "REQUIRED",
+                "defaultValue": ""
+              }
+            },
+            {
+              "price": {
+                "label": "Price per person",
+                "type": "text",
+                "state": "REQUIRED",
+                "defaultValue": ""
+              }
+            },
+            {
+              "nicePlace": {
+                "label": "Is Nice Place",
+                "type": "dropdown",
+                "state": "REQUIRED",
+                "values": [
+                  "TRUE",
+                  "FALSE"
+                ],
+                "defaultValue": ""
+              }
+            }
+          ]
+        }
+      }
+    },
+    "tourPackages": {
+      "displayName": "Tour Package",
+      "sections": {
+        "package": {
+          "displayName": "Package Information",
+          "fields": [
+            {
+              "code": {
+                "label": "Code",
+                "type": "text",
+                "state": "REQUIRED",
+                "defaultValue": ""
+              }
+            },
+            {
+              "name": {
+                "label": "Name",
+                "type": "text",
+                "state": "REQUIRED",
+                "defaultValue": "NEW"
+              }
+            },
+            {
+              "startDate": {
+                "label": "Departure Date",
+                "type": "date",
+                "state": "REQUIRED",
+                "defaultValue": "TODAY()"
+              }
+            },
+            {
+              "endDate": {
+                "label": "Return Date",
+                "type": "date",
+                "state": "REQUIRED",
+                "defaultValue": ""
+              }
+            }
+          ]
+        }
+      }
+    },
+    "users": {
+      "displayName": "Users",
+      "sections": [
+        {
+          "name": {
+            "label": "Name",
+            "type": "text",
+            "state": "REQUIRED",
+            "defaultValue": ""
+          }
+        },
+        {
+          "email": {
+            "label": "Email",
+            "type": "text",
+            "state": "REQUIRED",
+            "defaultValue": ""
+          }
+        }
+      ]
+    }
+  }
+}

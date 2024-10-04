@@ -4,6 +4,7 @@ import com.jalasoft.Tour.dto.TourDTO;
 import com.jalasoft.Tour.record.pattern.AdultTicket;
 import com.jalasoft.Tour.record.pattern.Ticket;
 import com.jalasoft.Tour.service.TourService;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 /**
  * @author Giordano Bortolini
  */
+@Tag(name = "Tours", description = "Tours API controller")
 @RestController
 @RequestMapping("/tour")
 public class TourController {

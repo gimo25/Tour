@@ -18,7 +18,7 @@ public class TourRatingEntity {
 
   @Id
   @GeneratedValue(strategy = GenerationType.UUID)
-  public long id;
+  public UUID id;
   @Column(name = "score")
   private Integer score;
   @Column(name = "comment")

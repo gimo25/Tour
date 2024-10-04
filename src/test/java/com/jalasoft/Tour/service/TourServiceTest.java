@@ -2,7 +2,6 @@ package com.jalasoft.Tour.service;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import com.jalasoft.Tour.repository.TourRepository;
 import org.junit.jupiter.api.Test;
 
 /**

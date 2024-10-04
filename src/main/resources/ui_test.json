@@ -1,0 +1,48 @@
+{
+  "displayName": "User Management",
+  "config": {
+    "users": {
+      "displayName": "Users",
+      "sections": {
+        "create": {
+          "isAuthorized": false,
+          "displayName": "Create User",
+          "fields": [
+            {
+              "name": {
+                "label": "Name",
+                "type": "text",
+                "state": "REQUIRED",
+                "defaultValue": ""
+              }
+            },
+            {
+              "lastName": {
+                "label": "last Name",
+                "type": "text",
+                "state": "REQUIRED",
+                "defaultValue": ""
+              }
+            },
+            {
+              "email": {
+                "label": "Email",
+                "type": "text",
+                "state": "REQUIRED",
+                "defaultValue": ""
+              }
+            },
+            {
+              "phone": {
+                "label": "Phone Number",
+                "type": "number",
+                "state": "REQUIRED",
+                "defaultValue": ""
+              }
+            }
+          ]
+        }
+      }
+    }
+  }
+}
