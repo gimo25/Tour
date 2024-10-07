@@ -2,8 +2,9 @@ package com.jalasoft.Tour.service;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import com.jalasoft.Tour.dto.DrinkItem;
-import com.jalasoft.Tour.dto.FoodItem;
+import com.jalasoft.Tour.application.dto.DrinkItem;
+import com.jalasoft.Tour.application.dto.FoodItem;
+import com.jalasoft.Tour.application.service.ItemService;
 import org.junit.jupiter.api.Test;
 
 /**

@@ -99,24 +99,28 @@
     },
     "users": {
       "displayName": "Users",
-      "sections": [
-        {
-          "name": {
-            "label": "Name",
-            "type": "text",
-            "state": "REQUIRED",
-            "defaultValue": ""
-          }
-        },
-        {
-          "email": {
-            "label": "Email",
-            "type": "text",
-            "state": "REQUIRED",
-            "defaultValue": ""
-          }
+      "sections": {
+        "create": {
+          "fields": [
+            {
+              "name": {
+                "label": "Name",
+                "type": "text",
+                "state": "REQUIRED",
+                "defaultValue": ""
+              }
+            },
+            {
+              "email": {
+                "label": "Email",
+                "type": "text",
+                "state": "REQUIRED",
+                "defaultValue": ""
+              }
+            }
+          ]
         }
-      ]
+      }
     }
   }
 }
