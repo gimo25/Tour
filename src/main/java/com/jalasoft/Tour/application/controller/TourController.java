@@ -1,17 +1,20 @@
 package com.jalasoft.Tour.application.controller;
 
 import com.jalasoft.Tour.application.dto.TourDTO;
+import com.jalasoft.Tour.infrastructure.utils.TourType;
 import com.jalasoft.Tour.record.pattern.AdultTicket;
 import com.jalasoft.Tour.record.pattern.Ticket;
 import com.jalasoft.Tour.service.TourService;
 import io.swagger.v3.oas.annotations.tags.Tag;
-import jakarta.validation.Valid;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -37,6 +40,13 @@ public class TourController {
   public String getTicket() {
     Ticket ticket = new AdultTicket(1,"Adult Ticket");
     return service.ticketMessage(ticket);
+  }
+
+  @GetMapping("/by-type/{type}")
+  @ResponseStatus(HttpStatus.OK)
+  @ResponseBody
+  public List<TourDTO> getTourByType(@PathVariable("type") String type) {
+    return service.findByTourType(TourType.getByType(type));
   }
 
 }

@@ -1,6 +1,7 @@
 package com.jalasoft.Tour.application.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.jalasoft.Tour.domain.entity.Tour;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
@@ -33,4 +34,15 @@ public class TourDTO {
   @NotNull
   private Boolean nicePlace;
 
+  public static TourDTO fromDomain(Tour tour) {
+    TourDTO tourDto = new TourDTO();
+
+    tourDto.setId(tour.getId().toString());
+    tourDto.setPrice((double) tour.getPrice());
+    tourDto.setDescription(tour.getDescription());
+    tourDto.setTitle(tour.getTitle());
+    tourDto.setNicePlace(tour.isNicePlace());
+    tourDto.setDuration(tour.getDuration());
+    return tourDto;
+  }
 }

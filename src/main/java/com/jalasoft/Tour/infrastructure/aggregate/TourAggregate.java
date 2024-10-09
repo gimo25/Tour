@@ -24,37 +24,18 @@ import lombok.Setter;
 @Entity
 @Table(name = "tour")
 @NoArgsConstructor
-public class TourAggregate {
+public class TourAggregate extends BaseTourAggregate {
 
-  @Id
-  @GeneratedValue(strategy = GenerationType.UUID)
-  private UUID id;
-  @Column(name = "title")
-  private String title;
-  @Column(name = "description")
-  private String description;
-  @Column(name = "duration")
-  private String duration;
-  @Column(name = "price")
-  private Integer price;
   @Column(name = "nicePlace")
   private boolean nicePlace;
-  @ManyToOne
-  @JoinColumn(name = "code")
-  private TourPackageAggregate tourPackage;
 
   public TourAggregate(String title, Integer price, Boolean isNicePlace) {
-    this.title = title;
-    this.price = price;
+    super(title, price);
     this.nicePlace = isNicePlace;
   }
 
   public TourAggregate(TourDTO tour) {
-
-    this.title = tour.getTitle();
-    this.description = tour.getDescription();
-    this.duration = tour.getDuration();
-    this.price = (int) Math.round(tour.getPrice());
+    super(tour);
     this.nicePlace = tour.getNicePlace();
   }
 
@@ -76,8 +57,8 @@ public class TourAggregate {
     return tourDTO;
   }
 
+  @Override
   public Tour toDomain() {
-
     return Tour.builder().id(id)
         .description(description).price(price).nicePlace(nicePlace).title(title).build();
   }

@@ -5,9 +5,12 @@ import com.jalasoft.Tour.application.validation.TourDtoValidation;
 import com.jalasoft.Tour.domain.entity.Tour;
 import com.jalasoft.Tour.infrastructure.aggregate.TourAggregate;
 import com.jalasoft.Tour.infrastructure.persistence.adapter.TourPostgresRepository;
+import com.jalasoft.Tour.infrastructure.utils.TourType;
 import com.jalasoft.Tour.record.pattern.AdultTicket;
 import com.jalasoft.Tour.record.pattern.ChildTicket;
 import com.jalasoft.Tour.record.pattern.Ticket;
+import java.util.ArrayList;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -44,6 +47,17 @@ public class TourService {
     TourAggregate aggregate = new TourAggregate(title, price, nicePlace);
     Tour entity = tourRepository.save(aggregate.toDomain());
     return TourAggregate.fromDomain(entity);
+  }
+
+  public List<TourDTO> findByTourType(TourType type) {
+    List<Tour> tours = new ArrayList<>();
+    if (type != null) {
+      switch (type) {
+        case EXTREME -> tours = tourRepository.getExtremeTours();
+        default -> tours = tourRepository.getTours();
+      }
+    }
+    return tours.stream().map(TourDTO::fromDomain).toList();
   }
 
   public String ticketMessage(Ticket ticket) {
