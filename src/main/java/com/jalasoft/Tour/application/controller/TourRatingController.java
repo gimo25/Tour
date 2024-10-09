@@ -1,7 +1,7 @@
 package com.jalasoft.Tour.application.controller;
 
 import com.jalasoft.Tour.application.dto.RatingDto;
-import com.jalasoft.Tour.application.service.TourRatingService;
+import com.jalasoft.Tour.service.TourRatingService;
 import java.util.UUID;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

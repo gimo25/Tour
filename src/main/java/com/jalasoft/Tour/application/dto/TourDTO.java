@@ -27,7 +27,7 @@ public class TourDTO {
   @NotNull @NotBlank
   private String duration;
 
-  @Min(0) @Max(value = 9999, message = "asdfasdfa")
+  @Min(0) @Max(9999)
   private Double price;
   @JsonProperty("isNice")
   @NotNull

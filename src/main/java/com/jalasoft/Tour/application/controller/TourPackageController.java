@@ -1,7 +1,7 @@
 package com.jalasoft.Tour.application.controller;
 
 import com.jalasoft.Tour.application.dto.TourPackageDTO;
-import com.jalasoft.Tour.application.service.TourPackageService;
+import com.jalasoft.Tour.service.TourPackageService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;

@@ -3,13 +3,11 @@ package com.jalasoft.Tour.application.controller;
 import com.jalasoft.Tour.application.dto.TourDTO;
 import com.jalasoft.Tour.record.pattern.AdultTicket;
 import com.jalasoft.Tour.record.pattern.Ticket;
-import com.jalasoft.Tour.application.service.TourService;
+import com.jalasoft.Tour.service.TourService;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.MethodArgumentNotValidException;
-import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -30,7 +28,7 @@ public class TourController {
 
   @PostMapping
   @ResponseStatus(HttpStatus.CREATED)
-  public TourDTO createTour(@Valid @RequestBody final TourDTO tour) {
+  public TourDTO createTour(@RequestBody final TourDTO tour) {
     return service.createTour(tour);
   }
 
@@ -41,9 +39,4 @@ public class TourController {
     return service.ticketMessage(ticket);
   }
 
-  @ExceptionHandler(MethodArgumentNotValidException.class)
-  @ResponseStatus(HttpStatus.BAD_REQUEST)
-  public String returnBadRequest(MethodArgumentNotValidException exception) {
-    return exception.getMessage();
-  }
 }

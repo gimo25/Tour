@@ -1,6 +1,7 @@
-package com.jalasoft.Tour.application.service;
+package com.jalasoft.Tour.service;
 
 import com.jalasoft.Tour.application.dto.TourDTO;
+import com.jalasoft.Tour.application.validation.TourDtoValidation;
 import com.jalasoft.Tour.domain.entity.Tour;
 import com.jalasoft.Tour.infrastructure.aggregate.TourAggregate;
 import com.jalasoft.Tour.infrastructure.persistence.adapter.TourPostgresRepository;
@@ -31,6 +32,7 @@ public class TourService {
   }
 
   public TourDTO createTour(TourDTO tour) {
+    new TourDtoValidation().validate(tour);
     TourAggregate aggregate = new TourAggregate(tour);
     Tour entity = tourRepository.save(aggregate.toDomain());
     tour.setId(entity.getId().toString());

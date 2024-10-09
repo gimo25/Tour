@@ -14,7 +14,6 @@ public class TourPackage {
   private LocalDate endDate;
   private Double price;
 
-
   public Double calculateBestPriceByLocation(String location) {
     return 2d;
   }

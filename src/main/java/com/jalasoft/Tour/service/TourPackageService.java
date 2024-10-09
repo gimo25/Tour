@@ -1,4 +1,4 @@
-package com.jalasoft.Tour.application.service;
+package com.jalasoft.Tour.service;
 
 import com.jalasoft.Tour.application.dto.TourPackageDTO;
 import com.jalasoft.Tour.infrastructure.aggregate.TourPackageAggregate;

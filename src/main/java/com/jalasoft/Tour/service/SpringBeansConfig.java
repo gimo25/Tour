@@ -1,4 +1,4 @@
-package com.jalasoft.Tour.application.service;
+package com.jalasoft.Tour.service;
 
 import org.springframework.context.annotation.Configuration;
 
