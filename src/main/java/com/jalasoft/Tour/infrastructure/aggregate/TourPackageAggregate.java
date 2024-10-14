@@ -1,6 +1,7 @@
 package com.jalasoft.Tour.infrastructure.aggregate;
 
 import com.jalasoft.Tour.application.dto.TourPackageDTO;
+import com.jalasoft.Tour.domain.entity.TourPackage;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -47,5 +48,19 @@ public class TourPackageAggregate {
     dto.setEndDate(this.endDate);
 
     return dto;
+  }
+
+  public static TourPackageAggregate fromDomain(TourPackage tour) {
+    TourPackageAggregate tourAggregate = new TourPackageAggregate();
+    tourAggregate.setCode(tour.getCode());
+    tourAggregate.setName(tour.getName());
+    tourAggregate.setPrice(tour.getPrice());
+    tourAggregate.setStartDate(tour.getStartDate());
+    return tourAggregate;
+  }
+
+  public TourPackage toDomain() {
+    return TourPackage.builder().price(this.price).code(code).name(name).startDate(startDate)
+        .build();
   }
 }

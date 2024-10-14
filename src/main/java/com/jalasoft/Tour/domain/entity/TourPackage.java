@@ -2,10 +2,12 @@ package com.jalasoft.Tour.domain.entity;
 
 import java.time.LocalDate;
 import lombok.Builder;
+import lombok.Getter;
 
 /**
  * @author Giordano Bortolini
  */
+@Getter
 @Builder
 public class TourPackage {
   private String code;

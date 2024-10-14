@@ -45,4 +45,9 @@ public class TourDTO {
     tourDto.setDuration(tour.getDuration());
     return tourDto;
   }
+
+  public Tour toDomain() {
+    return Tour.builder().description(this.description).price(this.price.intValue())
+        .title(this.title).build();
+  }
 }
