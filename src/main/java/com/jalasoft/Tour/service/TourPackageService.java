@@ -9,6 +9,7 @@ import com.jalasoft.Tour.infrastructure.persistence.repository.TourRepository;
 import jakarta.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,9 +17,9 @@ import org.springframework.stereotype.Service;
  * @author Giordano Bortolini
  */
 @Service
+@Slf4j
 @Transactional
 public class TourPackageService {
-
 
   public TourPackageRepository repository;
   public TourRepository tourRepository;
@@ -38,7 +39,6 @@ public class TourPackageService {
     return entity;
   }
 
-
   public TourPackageDTO findByPackageName(String name) {
     Optional<TourPackageAggregate> packageEntity =repository.findByName(name);
 
@@ -52,13 +52,23 @@ public class TourPackageService {
 
   public void createTourPackage(TourPackageDTO packageDTO) {
 
+    if (log.isErrorEnabled()) {
+      System.out.println("COPY - Create Tour Package " + packageDTO.toString());
+      log.error("Create Tour Package {}", packageDTO);
+    }
+
     List<TourAggregate> tourList = packageDTO.getTours().stream().map(TourDTO::toDomain)
         .map(TourAggregate::fromDomain).toList();
     tourRepository.saveAll(tourList);
     TourPackageAggregate tourPackage = TourPackageAggregate.fromDomain(packageDTO.toDomain());
     if (packageDTO.getCode() == null) {
+      log.error("Error trying to create Tour Package {}", packageDTO);
       throw new RuntimeException();
     }
     repository.save(tourPackage);
+  }
+
+  public List<TourPackageDTO> findAll() {
+    return null;
   }
 }

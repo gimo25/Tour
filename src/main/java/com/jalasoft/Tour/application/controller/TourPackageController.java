@@ -7,7 +7,9 @@ import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -19,7 +21,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.servlet.function.EntityResponse;
 
 /**
  * @author Giordano Bortolini
@@ -60,5 +61,13 @@ public class TourPackageController {
   @ResponseBody
   public String getByLowerPrice() {
     return service.getLowerPricePackageDescription();
+  }
+
+  @GetMapping("/export")
+  public ResponseEntity exportTourPackage() {
+    List<TourPackageDTO> tourPackageList = service.findAll();
+    return ResponseEntity.ok()
+        .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"packages.csv\"")
+        .contentType(MediaType.parseMediaType("text/csv")).body(tourPackageList);
   }
 }

@@ -11,6 +11,8 @@ import com.jalasoft.Tour.record.pattern.ChildTicket;
 import com.jalasoft.Tour.record.pattern.Ticket;
 import java.util.ArrayList;
 import java.util.List;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,6 +22,8 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class TourService {
+
+  private static final Logger logger = LoggerFactory.getLogger(TourService.class);
 
   private final TourPostgresRepository tourRepository;
 
@@ -50,6 +54,7 @@ public class TourService {
   }
 
   public List<TourDTO> findByTourType(TourType type) {
+    logger.info("find by tour type service method");
     List<Tour> tours = new ArrayList<>();
     if (type != null) {
       switch (type) {

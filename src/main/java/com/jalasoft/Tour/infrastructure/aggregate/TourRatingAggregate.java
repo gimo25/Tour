@@ -1,11 +1,13 @@
 package com.jalasoft.Tour.infrastructure.aggregate;
 
+import com.jalasoft.Tour.application.dto.ClientRatingDto;
 import com.jalasoft.Tour.application.dto.RatingDto;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import java.util.List;
 import java.util.UUID;
 import lombok.NoArgsConstructor;
 
@@ -38,4 +40,5 @@ public class TourRatingAggregate {
     rating.setScore(score);
     return rating;
   }
+
 }
