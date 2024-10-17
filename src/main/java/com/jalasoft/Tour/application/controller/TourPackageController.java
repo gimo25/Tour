@@ -1,6 +1,8 @@
 package com.jalasoft.Tour.application.controller;
 
+import com.jalasoft.Tour.application.dto.StreamOutput;
 import com.jalasoft.Tour.application.dto.TourPackageDTO;
+import com.jalasoft.Tour.application.utils.CSVStreamingOutput;
 import com.jalasoft.Tour.service.TourPackageService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -25,7 +27,6 @@ import org.springframework.web.bind.annotation.RestController;
 /**
  * @author Giordano Bortolini
  */
-
 @Tag(name = "Tours", description = "Tours API controller")
 @RestController
 @RequestMapping("/tour-package")
@@ -64,10 +65,13 @@ public class TourPackageController {
   }
 
   @GetMapping("/export")
-  public ResponseEntity exportTourPackage() {
+  public ResponseEntity<StreamOutput> exportTourPackage() {
     List<TourPackageDTO> tourPackageList = service.findAll();
+
+    StreamOutput output = new CSVStreamingOutput<>(tourPackageList);
+
     return ResponseEntity.ok()
         .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"packages.csv\"")
-        .contentType(MediaType.parseMediaType("text/csv")).body(tourPackageList);
+        .contentType(MediaType.parseMediaType("text/csv")).body(output);
   }
 }

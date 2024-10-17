@@ -2,11 +2,15 @@ package com.jalasoft.Tour.infrastructure.aggregate;
 
 import com.jalasoft.Tour.application.dto.TourPackageDTO;
 import com.jalasoft.Tour.domain.entity.TourPackage;
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -34,10 +38,14 @@ public class TourPackageAggregate {
   @Column(name = "price")
   private Double price;
 
+  @OneToMany(mappedBy = "tourPackage", cascade = CascadeType.ALL, orphanRemoval = true)
+  private List<TourAggregate> tours;
+
   public TourPackageAggregate(String code, String name, double price) {
     this.code = code;
     this.name = name;
     this.price = price;
+    this.tours = new ArrayList<>();
   }
 
   public TourPackageDTO toDTO() {
@@ -46,6 +54,7 @@ public class TourPackageAggregate {
     dto.setName(this.name);
     dto.setStartDate(this.startDate);
     dto.setEndDate(this.endDate);
+    dto.setTours(this.tours.stream().map(TourAggregate::toDTO).toList());
 
     return dto;
   }

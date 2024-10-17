@@ -19,7 +19,6 @@ import org.springframework.stereotype.Service;
 /**
  * @author Giordano Bortolini
  */
-
 @Service
 public class TourService {
 
@@ -30,12 +29,6 @@ public class TourService {
   @Autowired
   public TourService(TourPostgresRepository tourRepository) {
     this.tourRepository = tourRepository;
-    createTour("Colombia", 750, true);
-    createTour("Day Spa Package", 200, false);
-    createTour("Monterey to Santa Barbara Tour", 550, false);
-    createTour("Kids L.A. Tour", 100, true);
-    createTour("Islands of the Blue Dolphins Tour", 200, true);
-    createTour("Endangered Species Expedition", 250, true);
   }
 
   public TourDTO createTour(TourDTO tour) {

@@ -26,17 +26,12 @@ public class TourPackageService {
 
   @Autowired
   public TourPackageService(TourPackageRepository repository,TourRepository tourRepository) {
-
     this.repository = repository;
     this.tourRepository = tourRepository;
-    createTourPackage("TC1", "Travel to Colombia", 1500);
-    createTourPackage("TB1", "Travel to Bolivia", 2300);
-    createTourPackage("TM1", "Travel to Mexico",3100);
   }
 
   public TourPackageAggregate createTourPackage(String code, String name, double price) {
-    TourPackageAggregate entity = repository.save(new TourPackageAggregate(code, name, price));
-    return entity;
+    return repository.save(new TourPackageAggregate(code, name, price));
   }
 
   public TourPackageDTO findByPackageName(String name) {
@@ -69,6 +64,6 @@ public class TourPackageService {
   }
 
   public List<TourPackageDTO> findAll() {
-    return null;
+    return repository.findAll().stream().map(TourPackageAggregate::toDTO).toList();
   }
 }
